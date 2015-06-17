@@ -6,17 +6,17 @@ mediaType: application/hal+json
 
 /:
   get:
-    description: Information on available models
-  /{model}:
+    description: Information on available parameters
+  /{parameter}:
     get:
-      description: Information on specified model, including available parameters
-    /{parameter}:
+      description: Information on specified parameter, including which models it's available from
+    /{model}:
       get:
-        description: Information on specified parameter, including available runs
+        description: Information on specified model, including available runs
       /{run}:
         get:
           description: |
-            Information on the parameter in this specific run, including:
+            Information on the chosen parameter in this specific run, including:
               - level types (e.g. ground or hPa)
               - shape of the data
               - formats available

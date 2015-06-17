@@ -1,0 +1,39 @@
+#%RAML 0.8
+
+---
+title: restful-weather
+mediaType: application/hal+json
+
+/:
+  get:
+    description: Information on available models
+  /{model}:
+    get:
+      description: Information on specified model, including available parameters
+    /{parameter}:
+      get:
+        description: Information on specified parameter, including available runs
+      /{run}:
+        get:
+          description: |
+            Information on the parameter in this specific run, including:
+              - level types (ground, hPa)
+              - shape of the data
+              - formats available
+        /{level_type}_{parameter}.{file_format}:
+          get:
+            uriParameters:
+              file_format:
+                description: The file format requested
+                example: grib2
+            queryParameters:
+              minlat:
+              maxlat:
+              minlon:
+              maxlon:
+                description: Horizontal spatial subsetting
+                required: false
+              min{dim}:
+              max{dim}:
+                description: Additional dimensional subsetting as required, such as time or elevation
+                required: false

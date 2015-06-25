@@ -10,9 +10,3 @@ class WCSCapabilities(object):
 
     def get_coverage_ids(self):
         return [id.get_text() for id in self.soup.find_all('CoverageId')]
-
-if __name__ == '__main__':
-    with open('../../resources/wcs2.0-metocean/GetCapabilities.xml') as inf:
-        in_xml = inf.read()
-    capabilities = WCSCapabilities(in_xml)
-    print capabilities.get_coverage_ids()

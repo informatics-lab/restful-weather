@@ -1,5 +1,15 @@
 #!/usr/bin/env python
 
+'''
+OGC Web Services request builder.
+
+Example:
+
+service = ogc_requests.WebCoverageService(url, api_key='key')
+service.get_capabilities()
+service.describe_coverage(coverageid)
+'''
+
 import urllib2
 import urllib
 
@@ -28,7 +38,15 @@ class OGCService(object):
 
 
 class WebCoverageService(OGCService):
-    def __init__(self, url, **kwargs):
+    def __init__(self, url, version='2.0.0', **kwargs):
         params = _capitalise_keys(kwargs)
         params['SERVICE'] = 'WCS'
+        params['VERSION'] = version
         super(WebCoverageService, self).__init__(url, **params)
+
+    def describe_coverage(self, coverageid, **kwargs):
+        params = self.params.copy()
+        params.update(_capitalise_keys(kwargs))
+        params['REQUEST'] = 'DescribeCoverage'
+        params['COVERAGEID'] = coverageid
+        return _get_request(self.base_url, **params)

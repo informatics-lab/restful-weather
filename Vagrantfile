@@ -10,6 +10,6 @@ Vagrant.configure(2) do |config|
    config.vm.provision "shell", inline: <<-SHELL
      sudo apt-get update
      sudo apt-get install -y python-dev python-pip
-     sudo pip install flask
+     sudo pip install flask pep8
    SHELL
 end

@@ -28,7 +28,6 @@ class OGCService(object):
     def __init__(self, url, **kwargs):
         self.base_url = url
         self.params = _capitalise_keys(kwargs)
-        self.capabilities = self.get_capabilities()
 
     def get_capabilities(self, **kwargs):
         params = self.params.copy()

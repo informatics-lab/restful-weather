@@ -9,7 +9,7 @@ class TestWCSDescribe(unittest.TestCase):
         with open('./tests/resources/wcs2.0-metocean/DescribeCoverage.xml') \
           as inf:
             in_xml = inf.read()
-            self.describe = wcs_describe.WCSDescribeCoverage(in_xml)
+            self.describe = wcs_describe.Describe(in_xml)
 
     def test_get_parameters(self):
         expected = [u'msl-pressure', u'pressure']

@@ -21,3 +21,6 @@ class TestWCSDescribe(unittest.TestCase):
                     u'pressure': u'maskId_GFS_Latest_MeanSea_1'}
         masks = self.describe.masks
         self.assertEqual(masks, expected)
+
+    def test_get_specific_datamask(self):
+        print self.describe.mask_properties(u'maskId_GFS_Latest_MeanSea_1')

@@ -2,7 +2,7 @@
 
 import unittest
 from restful_weather.wcs_parser import wcs_describe
-
+from bs4 import element
 
 class TestWCSDescribe(unittest.TestCase):
     def setUp(self):
@@ -23,4 +23,6 @@ class TestWCSDescribe(unittest.TestCase):
         self.assertEqual(masks, expected)
 
     def test_get_specific_datamask(self):
-        print self.describe.mask_properties(u'maskId_GFS_Latest_MeanSea_1')
+        result = self.describe.mask_properties(u'maskId_GFS_Latest_MeanSea_1')
+        expected = element.Tag
+        self.assertIsInstance(result, expected)

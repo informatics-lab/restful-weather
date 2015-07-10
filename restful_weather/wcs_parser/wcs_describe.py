@@ -3,7 +3,6 @@
 from bs4 import BeautifulSoup
 from collections import defaultdict
 
-
 class Describe(object):
     def __init__(self, description_xml):
         self.description = description_xml
@@ -22,5 +21,5 @@ class Describe(object):
 
     def mask_properties(self, mask_id):
         tag = 'gml:id'
-        mask = self.soup.find('dataMask', 'gml:id'=mask_id)
-        print mask['gml:id']
+        mask = self.soup.find('dataMask', attrs={"gml:id": mask_id})
+        return mask

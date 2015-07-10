@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
-from bs4 import BeautifulSoup
 from collections import defaultdict
+
+from bs4 import BeautifulSoup
+
 
 class Describe(object):
     def __init__(self, description_xml):

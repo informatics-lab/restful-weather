@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 
 import unittest
-from restful_weather.wcs_parser import wcs_describe
+
 from bs4 import element
+
+from restful_weather.wcs_parser import wcs_describe
+
 
 class TestWCSDescribe(unittest.TestCase):
     def setUp(self):

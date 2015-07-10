@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import unittest
+
 from restful_weather.wcs_parser import wcs_capabilities
 
 

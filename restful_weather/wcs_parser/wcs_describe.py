@@ -22,6 +22,5 @@ class Describe(object):
                 self.soup.find_all('dataMaskReference')]
 
     def mask_properties(self, mask_id):
-        tag = 'gml:id'
         mask = self.soup.find('dataMask', attrs={"gml:id": mask_id})
         return mask

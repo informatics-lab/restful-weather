@@ -1,17 +1,19 @@
 #!/usr/bin/env python
 
 import unittest
+
 from restful_weather.wcs_parser import wcs_capabilities
 
 
 class TestWCSParser(unittest.TestCase):
     def setUp(self):
-        with open('./tests/resources/wcs2.0-metocean/GetCapabilities.xml') as inf:
+        with open('./tests/resources/wcs2.0-metocean/GetCapabilities.xml') \
+          as inf:
             in_xml = inf.read()
-            self.capabilities = wcs_capabilities.WCSCapabilities(in_xml)
+            self.capabilities = wcs_capabilities.Capabilities(in_xml)
 
     def test_get_coverage_ids(self):
-        expected = [u'GFS_2015-06-18T06.00.00Z_AGL', 
+        expected = [u'GFS_2015-06-18T06.00.00Z_AGL',
                     u'GFS_2015-06-18T06.00.00Z_AMSL',
                     u'GFS_2015-06-18T06.00.00Z_Atmosphere',
                     u'GFS_2015-06-18T06.00.00Z_AtmosphereTop',
@@ -30,7 +32,7 @@ class TestWCSParser(unittest.TestCase):
                     u'GFS_Latest_MaxWind',
                     u'GFS_Latest_MeanSea',
                     u'GFS_Latest_Tropopause',
-                    u'GFS_Latest_ZeroIsotherm'] 
+                    u'GFS_Latest_ZeroIsotherm']
 
-        ids = self.capabilities.get_coverage_ids()
+        ids = self.capabilities.coverages
         self.assertEqual(ids, expected)
